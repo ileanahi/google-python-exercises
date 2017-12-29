@@ -8,6 +8,8 @@
 
 # Additional basic string exercises
 
+from math import ceil
+
 # D. verbing
 # Given a string, if its length is at least 3,
 # add 'ing' to its end.
@@ -17,8 +19,12 @@
 # Return the resulting string.
 def verbing(s):
   # +++your code here+++
-  return
-
+	if s.endswith('ing'):
+		return s + 'ly'
+	elif len(s) > 3:
+		return s + 'ing'
+	else:
+		return s
 
 # E. not_bad
 # Given a string, find the first appearance of the
@@ -30,8 +36,12 @@ def verbing(s):
 # This dinner is good!
 def not_bad(s):
   # +++your code here+++
-  return
-
+	if s.find('not') < s.find('bad'):
+		begin = s.find('not')
+		end = s.find('bad') + 3
+		return s[0:begin] + 'good' + s[end:]
+	else:
+		return s
 
 # F. front_back
 # Consider dividing a string into two halves.
@@ -42,7 +52,19 @@ def not_bad(s):
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
   # +++your code here+++
-  return
+	if len(a)%2 == 0:
+		aFront = a[:len(a)/2]
+		aBack = a[len(a)/2:]
+	else:
+		aFront = a[:int(ceil(len(a)/2))+1]
+		aBack = a[int(ceil(len(a)/2))+1:]
+	if len(b)%2 == 0:
+		bFront = b[:len(b)/2]
+		bBack = b[len(b)/2:]
+	else:
+		bFront = b[:int(ceil(len(b)/2))+1]
+		bBack = b[int(ceil(len(b)/2))+1:]
+	return aFront + bFront + aBack + bBack
 
 
 # Simple provided test() function used in main() to print
